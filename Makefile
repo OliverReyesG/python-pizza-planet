@@ -22,8 +22,10 @@ venv: venv/bin/activate
 setup: venv
 	pip install -r requirements.txt
 
+
 test: venv
 	python manage.py test
+
 
 run: venv
 	python manage.py run
