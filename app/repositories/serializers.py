@@ -1,11 +1,19 @@
 from app.plugins import ma
-from .models import Ingredient, Size, Order, OrderDetail
+from .models import Ingredient, Size, Order, OrderDetail, Beverage
 
 
 class IngredientSerializer(ma.SQLAlchemyAutoSchema):
 
     class Meta:
         model = Ingredient
+        load_instance = True
+        fields = ('_id', 'name', 'price')
+
+
+class BeverageSerializer(ma.SQLAlchemyAutoSchema):
+
+    class Meta:
+        model = Beverage
         load_instance = True
         fields = ('_id', 'name', 'price')
 
@@ -27,7 +35,9 @@ class OrderDetailSerializer(ma.SQLAlchemyAutoSchema):
         load_instance = True
         fields = (
             'ingredient_price',
-            'ingredient'
+            'ingredient',
+            'beverage_price',
+            'beverage',
         )
 
 
