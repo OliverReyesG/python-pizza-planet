@@ -21,24 +21,20 @@ order_detail_adapter = SQLiteOrderDetailAdapter()
 customer_data = get_customer_data()
 
 
-# ingredient_response = ingredient_adapter.create_many(ingredient_data)
-# beverage_response = beverage_adapter.create_many(beverage_data)
-# size_response = size_adapter.create_many(size_data)
+ingredient_adapter.create_many(ingredient_data)
+beverage_adapter.create_many(beverage_data)
+size_adapter.create_many(size_data)
 
-# print(ingredient_response)
-# print(beverage_response)
-# print(size_response)
-
-parsed_ingredients = ingredient_adapter.list()
-parsed_beverages = beverage_adapter.list()
-parsed_sizes = size_adapter.list()
+fetched_ingredients = ingredient_adapter.list()
+fetched_beverages = beverage_adapter.list()
+fetched_sizes = size_adapter.list()
 
 
 def generate_order(ingredients: List[tuple], beverages: List[tuple], size: tuple, customer: dict) -> dict:
     total_price = sum(ingredient[2] for ingredient in ingredients) + \
         sum(beverage[2] for beverage in beverages) + size[2]
     new_order = {"client_name": customer.get("client_name"), "client_dni": customer.get("client_dni"), "client_address": customer.get(
-        "client_address"), "client_phone": customer.get("client_phone"), "total_price": total_price, "ingredients": ingredients, "beverages": beverages, "size_id": size[0]}
+        "client_address"), "client_phone": customer.get("client_phone"), "total_price": round(total_price, 2), "ingredients": ingredients, "beverages": beverages, "size_id": size[0]}
     return new_order
 
 
@@ -65,13 +61,8 @@ def get_order_details(order: dict) -> List[dict]:
     return order_details
 
 
-# print(parsed_ingredients, "\n")
-# print(parsed_beverages, "\n")
-# print(parsed_sizes, "\n")
-
-
 random_orders = generate_random_orders(
-    ingredients=parsed_ingredients, beverages=parsed_beverages, sizes=parsed_sizes, customers=customer_data)
+    ingredients=fetched_ingredients, beverages=fetched_beverages, sizes=fetched_sizes, customers=customer_data)
 
 
 for order in random_orders:
