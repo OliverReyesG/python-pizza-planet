@@ -1,6 +1,10 @@
 
 [
     {
+        "name": "Personal",
+        "price": 3        
+    },
+    {
         "name": "Small",
         "price": 5        
     },
