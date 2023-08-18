@@ -41,11 +41,12 @@ def generate_order(ingredients: List[tuple], beverages: List[tuple], size: tuple
 def generate_random_orders(ingredients: List[tuple], beverages: List[tuple], sizes: List[tuple], customers: List[dict]) -> list:
     random_orders = []
     for customer in customers:
-        ingredients_range = generate_random_range(max_value=len(ingredients))
-        beverages_range = generate_random_range(max_value=len(beverages))
-        random_orders.append(generate_order(ingredients=ingredients[ingredients_range[0]:ingredients_range[1]],
-                                            beverages=beverages[beverages_range[0]:beverages_range[1]],
-                                            size=sizes[random.randint(0, len(sizes) - 1)], customer=customer))
+        for i in range(random.randint(1, 6)):
+            ingredients_range = generate_random_range(max_value=len(ingredients))
+            beverages_range = generate_random_range(max_value=len(beverages))
+            random_orders.append(generate_order(ingredients=ingredients[ingredients_range[0]:ingredients_range[1]],
+                                                beverages=beverages[beverages_range[0]:beverages_range[1]],
+                                                size=sizes[random.randint(0, len(sizes) - 1)], customer=customer))
     return random_orders
 
 
