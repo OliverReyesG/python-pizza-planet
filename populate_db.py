@@ -74,3 +74,5 @@ for order in random_orders:
     order_detail_adapter.create_many(order_details)
 
 print("Database population was completed successfully!")
+cursor.close()
+conn.close()
