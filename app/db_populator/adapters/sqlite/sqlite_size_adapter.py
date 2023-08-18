@@ -8,6 +8,9 @@ class SQLiteSizeAdapter(BaseRepository):
     def __init__(self) -> None:
         self.table_name = "size"
 
+    def create(self, data: dict) -> tuple:
+        return super().create(data)
+
     def create_many(self, data: List[dict]) -> list:
         values = [(row["name"], row["price"]) for row in data]
         insert_query = f"INSERT INTO {self.table_name} (name, price) VALUES (?, ?)"
