@@ -1,0 +1,23 @@
+
+[
+    {
+        "name": "Personal",
+        "price": 3        
+    },
+    {
+        "name": "Small",
+        "price": 5        
+    },
+    {
+        "name": "Madium",
+        "price": 8        
+    },
+    {
+        "name": "Large",
+        "price": 12        
+    },
+    {
+        "name": "Extra large",
+        "price": 16
+    }
+]

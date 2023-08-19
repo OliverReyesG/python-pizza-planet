@@ -19,6 +19,18 @@ venv: venv/bin/activate
 	. venv/bin/activate
 
 
+.PHONY: init-db
+init-db: venv
+	python manage.py db init
+	python manage.py db migrate
+	python manage.py db upgrade
+
+
+.PHONY: populate-db
+populate-db: venv
+	python populate_db.py
+
+
 setup: venv
 	pip install -r requirements.txt
 
