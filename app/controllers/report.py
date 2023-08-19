@@ -62,7 +62,7 @@ class ReportController:
     def get_revenue_by_customer(cls):
         try:
             response = cls.session.query(Order.client_name, func.sum(
-                Order.total_price).label('revenue')).group_by(Order.client_name, Order.client_dni).order_by(desc('revenue')).all()
+                Order.total_price).label('revenue')).group_by(Order.client_name, Order.client_dni).all()
             serialized_response = {"customers": [
                 {"client_name": row[0], "revenue": round(row[1], 2)} for row in response]}
             top_customers = cls._get_top_customer(
