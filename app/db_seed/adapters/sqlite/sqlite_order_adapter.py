@@ -1,7 +1,7 @@
 from typing import List
 from datetime import datetime
-from app.db_populator.adapters.base_adapter import BaseRepository
-from app.db_populator.db.session import conn, cursor
+from app.db_seed.adapters.base_adapter import BaseRepository
+from app.db_seed.db.session import conn, cursor
 from app.common.utils import generate_random_date
 
 class SQLiteOrderAdapter(BaseRepository):
