@@ -2,11 +2,13 @@
 
 
 .DEFAULT_GOAL := setup
-.PHONY: venv
-
 
 PYTHON = ./venv/bin/python
 PIP = ./venv/bin/pip
+
+DOCKER_USER= oliverreyes
+APP_NAME = pizza-planet
+TAG = latest
 
 
 venv/bin/activate: requirements.txt
@@ -15,6 +17,7 @@ venv/bin/activate: requirements.txt
 	. venv/bin/activate
 
 
+.PHONY: venv
 venv: venv/bin/activate
 	. venv/bin/activate
 
@@ -41,3 +44,8 @@ test: venv
 
 run: venv
 	python manage.py run --host=0.0.0.0
+
+
+.PHONY:
+build:
+	docker build -t $(DOCKER_USER)/$(APP_NAME):$(TAG) .
