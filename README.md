@@ -112,3 +112,36 @@ ext install ritwickdey.LiveServer
 ```bash
 python3 manage.py test
 ```
+
+### Docker
+
+#### Build docker image
+You can build a docker image for both `backend` and `frontend` by running the following commands:
+
+##### Backend:
+Wodking directory ```./``` (project root)
+```bash
+make build
+```
+
+##### Frontend:
+Wodking directory ```ui/``` (project submodule)
+```bash
+make build
+```
+
+#### Docker compose
+You can run both services in separate container with the following command:
+
+```bash
+docker-compose up
+```
+This will build both images if they don't already exist and run them in separate containers.
+
+> Important note: you need to provide a `.env` file with the ports you want both of the services to run on.
+
+The `.env` file should have the following variables:
+```
+BACKEND_PORT=5000
+FRONTEND_PORT=8080
+```
