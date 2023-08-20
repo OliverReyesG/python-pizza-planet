@@ -1,7 +1,7 @@
 import os
 
 from app.db_populator.adapters.sqlite import SQLiteIngredientAdapter, SQLiteBeverageAdapter, SQLiteSizeAdapter, SQLiteOrderAdapter, SQLiteOrderDetailAdapter
-from app.db_populator.script import get_ingredient_data, get_beverage_data, get_size_data, get_customer_data, generate_order, generate_random_orders, get_order_details
+from app.db_populator.generators import get_ingredient_data, get_beverage_data, get_size_data, get_customer_data, generate_order, generate_random_orders, get_order_details
 from app.db_populator.db.session import conn, cursor
 from app.db_populator.parsers import JSONFileParser, CSVFileParser
 
