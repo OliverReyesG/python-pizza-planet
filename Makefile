@@ -7,7 +7,7 @@ PYTHON = ./venv/bin/python
 PIP = ./venv/bin/pip
 
 DOCKER_USER= oliverreyes
-APP_NAME = pizza-planet
+APP_NAME = pizza-planet-backend
 TAG = latest
 
 
