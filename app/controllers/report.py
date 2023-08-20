@@ -73,7 +73,7 @@ class ReportController:
             return None, e
 
     @classmethod
-    def get_report(cls):
+    def get_all(cls):
         try:
             ingredient_report = cls.get_most_requested_ingredient()[0]
             revenue_by_month = cls.get_revenue_by_month()[0]
