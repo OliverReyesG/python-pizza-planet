@@ -1,24 +1,32 @@
+import os
 import random
 from typing import List
 from app.common.utils import generate_random_range
 from app.db_populator.adapters.sqlite import SQLiteIngredientAdapter, SQLiteBeverageAdapter, SQLiteSizeAdapter, SQLiteOrderAdapter, SQLiteOrderDetailAdapter
 from app.db_populator.script import get_ingredient_data, get_beverage_data, get_size_data, get_customer_data
 from app.db_populator.db.session import conn, cursor
+from app.db_populator.parsers import JSONFileParser, CSVFileParser
+
+working_dir = os.getcwd()
+data_dir = f"{working_dir}/app/db_populator/data/"
+
+json_parser = JSONFileParser()
+csv_parser = CSVFileParser()
 
 ingredient_adapter = SQLiteIngredientAdapter()
-ingredient_data = get_ingredient_data()
+ingredient_data = get_ingredient_data(parser=json_parser, data_path=f"{data_dir}/ingredients.json")
 
 beverage_adapter = SQLiteBeverageAdapter()
-beverage_data = get_beverage_data()
+beverage_data = get_beverage_data(parser=json_parser, data_path=f"{data_dir}/beverages.json")
 
 size_adapter = SQLiteSizeAdapter()
-size_data = get_size_data()
+size_data = get_size_data(parser=csv_parser, data_path=f"{data_dir}/sizes.csv")
 
 order_adapter = SQLiteOrderAdapter()
 
 order_detail_adapter = SQLiteOrderDetailAdapter()
 
-customer_data = get_customer_data()
+customer_data = get_customer_data(parser=json_parser, data_path=f"{data_dir}/customers.json")
 
 
 ingredient_adapter.create_many(ingredient_data)

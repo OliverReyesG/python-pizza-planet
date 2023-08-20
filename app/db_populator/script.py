@@ -1,27 +1,22 @@
 import os
-from app.db_populator.parsers.json_parser import JSONFileParser
-
-parser = JSONFileParser()
-working_dir = os.getcwd()
-data_dir = f"{working_dir}/app/db_populator/data/"
+from app.db_populator.parsers import FileParser
 
 
-def get_beverage_data() -> dict:
-    beverage_data = parser.parse(f"{data_dir}/beverages.json")
+def get_beverage_data(parser: FileParser, data_path: str) -> dict:
+    beverage_data = parser.parse(data_path)
     return beverage_data
 
 
-def get_ingredient_data() -> dict:
-    ingredient_data = parser.parse(f"{data_dir}/ingredients.json")
+def get_ingredient_data(parser: FileParser, data_path: str) -> dict:
+    ingredient_data = parser.parse(data_path)
     return ingredient_data
 
 
-def get_size_data() -> dict:
-    size_data = parser.parse(f"{data_dir}/sizes.json")
+def get_size_data(parser: FileParser, data_path: str) -> dict:
+    size_data = parser.parse(data_path)
     return size_data
 
 
-def get_customer_data() -> dict:
-    customer_data = parser.parse(f"{data_dir}/customers.json")
+def get_customer_data(parser: FileParser, data_path: str) -> dict:
+    customer_data = parser.parse(data_path)
     return customer_data
-
