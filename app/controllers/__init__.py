@@ -1,3 +1,4 @@
+from .base import BaseController
 from .index import IndexController
 from .ingredient import IngredientController
 from .order import OrderController
