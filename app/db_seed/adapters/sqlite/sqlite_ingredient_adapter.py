@@ -1,12 +1,12 @@
 from typing import List
-from app.db_populator.adapters.base_adapter import BaseRepository
-from app.db_populator.db.session import conn, cursor
+from app.db_seed.adapters.base_adapter import BaseRepository
+from app.db_seed.db.session import conn, cursor
 
 
-class SQLiteSizeAdapter(BaseRepository):
+class SQLiteIngredientAdapter(BaseRepository):
 
     def __init__(self) -> None:
-        self.table_name = "size"
+        self.table_name = "ingredient"
 
     def create(self, data: dict) -> tuple:
         return super().create(data)

@@ -1,12 +1,12 @@
 import os
 
-from app.db_populator.adapters.sqlite import SQLiteIngredientAdapter, SQLiteBeverageAdapter, SQLiteSizeAdapter, SQLiteOrderAdapter, SQLiteOrderDetailAdapter
-from app.db_populator.generators import get_ingredient_data, get_beverage_data, get_size_data, get_customer_data, generate_order, generate_random_orders, get_order_details
-from app.db_populator.db.session import conn, cursor
-from app.db_populator.parsers import JSONFileParser, CSVFileParser
+from app.db_seed.adapters.sqlite import SQLiteIngredientAdapter, SQLiteBeverageAdapter, SQLiteSizeAdapter, SQLiteOrderAdapter, SQLiteOrderDetailAdapter
+from app.db_seed.generators import get_ingredient_data, get_beverage_data, get_size_data, get_customer_data, generate_random_orders, get_order_details
+from app.db_seed.db.session import conn, cursor
+from app.db_seed.parsers import JSONFileParser, CSVFileParser
 
 working_dir = os.getcwd()
-data_dir = f"{working_dir}/app/db_populator/data/"
+data_dir = f"{working_dir}/app/db_seed/data/"
 
 json_parser = JSONFileParser()
 csv_parser = CSVFileParser()

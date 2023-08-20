@@ -1,7 +1,7 @@
 from typing import List
 import random
 from app.common.utils import generate_random_range
-from app.db_populator.parsers import FileParser
+from app.db_seed.parsers import FileParser
 
 
 def get_beverage_data(parser: FileParser, data_path: str) -> dict:
