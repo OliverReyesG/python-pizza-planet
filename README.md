@@ -63,6 +63,18 @@ python3 manage.py db migrate
 python3 manage.py db upgrade
 ```
 
+Or just:
+
+```
+make init-db
+```
+
+Once your database is initialized you can populate it with data by using the following command:
+
+```
+make populate-db
+```
+
 - If you want to use the hot reload feature set FLASK_ENV before running the project:
 
 _For linux/MacOS users:_
@@ -91,6 +103,12 @@ python3 manage.py run
 git submodule update --init
 ```
 
+Or
+
+```bash
+make submodule
+```
+
 - Install Live Server extension if you don't have it from [here](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) on VSCode Quick Open (`Ctrl + P`)
 
 ```bash
@@ -111,6 +129,12 @@ ext install ritwickdey.LiveServer
 
 ```bash
 python3 manage.py test
+```
+
+Or just:
+
+```
+make test
 ```
 
 ### Docker
@@ -134,11 +158,16 @@ make build
 You can run both services in separate container with the following command:
 
 ```bash
-docker-compose up
+docker compose up
 ```
-This will build both images if they don't already exist and run them in separate containers.
 
 > Important note: you need to provide a `.env` file with the ports you want both of the services to run on.
+
+> You need to initialize the submodule before runninng the command
+
+This will build both images if they don't already exist and run them in separate containers.
+
+
 
 The `.env` file should have the following variables:
 ```

@@ -24,26 +24,30 @@ venv: venv/bin/activate
 
 .PHONY: init-db
 init-db: venv
-	python manage.py db init
-	python manage.py db migrate
-	python manage.py db upgrade
+	$(PYTHON) manage.py db init
+	$(PYTHON) manage.py db migrate
+	$(PYTHON) manage.py db upgrade
 
 
 .PHONY: populate-db
 populate-db: venv
-	python populate_db.py
+	$(PYTHON) populate_db.py
 
 
 setup: venv
-	pip install -r requirements.txt
+	$(PIP) install -r requirements.txt
 
 
 test: venv
-	python manage.py test
+	$(PYTHON) manage.py test
 
 
 run: venv
-	python manage.py run --host=0.0.0.0
+	$(PYTHON) manage.py run --host=0.0.0.0
+
+
+submodule: ui
+	git submodule update --init
 
 
 .PHONY:

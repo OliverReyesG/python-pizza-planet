@@ -1,1 +1,6 @@
-ui/
+.vscode
+.pytest_cache
+ui
+venv
+migrations
+pizza.sqlite
