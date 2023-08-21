@@ -25,7 +25,7 @@ class ReportController:
     @classmethod
     def _get_top_customer(cls, serialized_customers: list):
         sorted_customers = sorted(
-            serialized_customers, key=lambda customer: customer.get("revenue"), reverse=True)
+            serialized_customers, key=lambda customer: customer.get("orders"), reverse=True)
         return sorted_customers[:3]
 
     @classmethod
@@ -59,12 +59,12 @@ class ReportController:
             return None, e
 
     @classmethod
-    def get_revenue_by_customer(cls):
+    def get_orders_by_customer(cls):
         try:
-            response = cls.session.query(Order.client_name, func.sum(
-                Order.total_price).label('revenue')).group_by(Order.client_name, Order.client_dni).all()
+            response = cls.session.query(Order.client_name, func.count(
+                Order._id).label('orders')).group_by(Order.client_name, Order.client_dni).all()
             serialized_response = {"customers": [
-                {"client_name": row[0], "revenue": round(row[1], 2)} for row in response]}
+                {"client_name": row[0], "orders": round(row[1], 2)} for row in response]}
             top_customers = cls._get_top_customer(
                 serialized_customers=serialized_response.get("customers"))
             serialized_response["top_customers"] = top_customers
@@ -77,11 +77,11 @@ class ReportController:
         try:
             ingredient_report = cls.get_most_requested_ingredient()[0]
             revenue_by_month = cls.get_revenue_by_month()[0]
-            revenue_by_customer = cls.get_revenue_by_customer()[0]
+            revenue_by_customer = cls.get_orders_by_customer()[0]
 
             serialized_response = {"ingredient_report": ingredient_report,
                                    "revenue_by_month": revenue_by_month,
-                                   "revenue_by_customer": revenue_by_customer}
+                                   "orders_by_customer": revenue_by_customer}
             return serialized_response, None
         except Exception as e:
             return None, e

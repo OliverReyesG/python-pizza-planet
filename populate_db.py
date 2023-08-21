@@ -40,7 +40,7 @@ fetched_sizes = size_adapter.list()
 
 
 random_orders = generate_random_orders(
-    ingredients=fetched_ingredients, beverages=fetched_beverages, sizes=fetched_sizes, customers=customer_data)
+    ingredients=fetched_ingredients, beverages=fetched_beverages, sizes=fetched_sizes, customers=customer_data, max_orders=50)
 
 
 for order in random_orders:
