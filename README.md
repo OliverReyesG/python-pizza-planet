@@ -91,6 +91,12 @@ python3 manage.py run
 git submodule update --init
 ```
 
+Or
+
+```bash
+make submodule
+```
+
 - Install Live Server extension if you don't have it from [here](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) on VSCode Quick Open (`Ctrl + P`)
 
 ```bash
