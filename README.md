@@ -63,6 +63,18 @@ python3 manage.py db migrate
 python3 manage.py db upgrade
 ```
 
+Or just:
+
+```
+make init-db
+```
+
+Once your database is initialized you can populate it with data by using the following command:
+
+```
+make populate-db
+```
+
 - If you want to use the hot reload feature set FLASK_ENV before running the project:
 
 _For linux/MacOS users:_
@@ -117,6 +129,12 @@ ext install ritwickdey.LiveServer
 
 ```bash
 python3 manage.py test
+```
+
+Or just:
+
+```
+make test
 ```
 
 ### Docker
