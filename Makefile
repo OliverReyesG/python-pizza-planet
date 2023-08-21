@@ -14,6 +14,7 @@ TAG = latest
 venv/bin/activate: requirements.txt
 	python -m venv venv
 	chmod +x venv/bin/activate
+	. venv/bin/activate
 
 
 .PHONY: venv
@@ -23,26 +24,26 @@ venv: venv/bin/activate
 
 .PHONY: init-db
 init-db: venv
-	$(PYTHON) manage.py db init
-	$(PYTHON) manage.py db migrate
-	$(PYTHON) manage.py db upgrade
+	python manage.py db init
+	python manage.py db migrate
+	python manage.py db upgrade
 
 
 .PHONY: populate-db
 populate-db: venv
-	$(PYTHON) populate_db.py
+	python populate_db.py
 
 
 setup: venv
-	$(PIP) install -r requirements.txt
+	pip install -r requirements.txt
 
 
 test: venv
-	$(PYTHON) manage.py test
+	python manage.py test
 
 
 run: venv
-	$(PYTHON) manage.py run --host=0.0.0.0
+	python manage.py run --host=0.0.0.0
 
 
 submodule: ui
